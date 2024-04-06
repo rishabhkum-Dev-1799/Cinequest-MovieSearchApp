@@ -4,7 +4,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import { cineFadeIn } from 'src/utils/motion';
 
-const SearchBar = (props) => {
+const SearchBar = ({searchQuery,setSearchQuery}) => {
   return (
     <div className='w-full p-2 lg:p-4 flex items-center justify-center'>
       <motion.div variants={cineFadeIn("up", "tween", 0.2, 0.3)} initial="hidden" animate="show" whileHover={{scale:1.05}} className='relative flex items-center justify-start gap-2 px-2 rounded-lg w-full lg:w-1/2  overflow-hidden bg-input_bg_dark border border-white min-w-[200px]'>
@@ -12,12 +12,15 @@ const SearchBar = (props) => {
           className='absolute text-black w-[30px]'
           fontSize={32}
         />
-        <motion.input type='text' placeholder='Enter Your Fav Watch...' className=" flex-1 h-16 px-12 placeholder:text-black bg-transparent outline-none placeholder:text-sm text-lg font-bold"/>
+        <motion.input type='text' placeholder='Enter Your Fav Watch...' className=" flex-1 h-16 px-12 placeholder:text-black bg-transparent outline-none placeholder:text-sm text-lg font-bold" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}/>
       </motion.div>
     </div>
   );
 };
 
-SearchBar.propTypes = {};
+SearchBar.propTypes = {
+  searchQuery: PropTypes.string.isRequired,
+  setSearchQuery: PropTypes.func.isRequired,
+};
 
 export default SearchBar;
