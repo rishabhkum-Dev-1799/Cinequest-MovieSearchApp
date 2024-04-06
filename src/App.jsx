@@ -1,12 +1,23 @@
-import { useState } from 'react'
-import './App.css'
+import { lazy, useState } from 'react'
+import {Routes,Route} from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// Custom Components 
+import NavigationWrapper from './components/Navigation/NavigationWrapper';
+const CineSearchPage = lazy(()=>import("src/pages/CineSearchPage"))
 
 function App() {
-
   return (
-    <div className="text-gray-500 text-2xl">
-      Cine Quest Initialized
-    </div>
+    <main>
+      {/* Adding Toast Container */}
+      <ToastContainer/>
+      <NavigationWrapper>
+      <Routes>
+        <Route path='/*' element={<CineSearchPage/>}/>
+      </Routes>
+      </NavigationWrapper>
+    </main>
   )
 }
 
