@@ -9,7 +9,7 @@ import CineQuestLogo from "../../../public/assests/logo/cinequest_logo.png"
 
 const Navbar = () => {
   return (
-    <nav className='w-full h-full p-4 flex flex-col items-center rounded-xl border-2 border-[]'>
+    <nav className='bg-navbar_bg w-full h-full p-4 flex flex-col items-center '>
       {/* logo and Title */}
       <div className='w-full flex flex-col items-center justify-center'>
         <div className='w-[80px] overflow-hidden'>

@@ -8,7 +8,8 @@ export default {
     extend: {
       colors:{
         text_primary:"#fff",
-        input_bg_dark:"#222"
+        input_bg_dark:"#fff",
+        navbar_bg:"#2c3e50"
       }
     },
   },
