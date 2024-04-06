@@ -10,7 +10,7 @@ const initialState={
 
 /**Creating the Slice Object and defining the reducer Action functions */
 const multiFilmSlice= createSlice({
-    name:"multiFilm",
+    name:"multiFilms",
     initialState,
     reducers:{
         isFilmsLoading:(state)=>{

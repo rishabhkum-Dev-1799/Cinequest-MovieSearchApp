@@ -4,6 +4,6 @@ import { singleFilmSliceReducer } from "./reducers/singleFilmSlice";
 
 /**Combining the Reducers into the Root Reducers */
 export const rootReducer = combineReducers({
-    multiFilm:multiFilmSliceReducer,
+    multiFilms:multiFilmSliceReducer,
     singleFilm:singleFilmSliceReducer
 });

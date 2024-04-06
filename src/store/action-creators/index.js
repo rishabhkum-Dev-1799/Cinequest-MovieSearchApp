@@ -1,5 +1,5 @@
 import * as multiFilmActionCreators from "./multiFilmsActionCreator";
-import * as singleFilmActionCreators from "./singleFilmActionCreator";
+import * as singleFilmActionCreators from "./singleFilmsActionCreator";
 
 export default{
     ...multiFilmActionCreators,
