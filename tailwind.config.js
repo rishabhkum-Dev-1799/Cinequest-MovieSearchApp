@@ -10,6 +10,13 @@ export default {
         text_primary:"#fff",
         input_bg_dark:"#fff",
         navbar_bg:"#2c3e50"
+      },
+      screens: {
+        'sm': '480px',
+        'md': '700px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
       }
     },
   },
