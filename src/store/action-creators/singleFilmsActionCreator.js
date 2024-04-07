@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { singleFilmActions } from "../reducers/singleFilmSlice";
-import { OMDB_API_URL } from "src/constants";
+import { OMBD_API_KEY, OMDB_API_URL } from "src/constants";
 
 export const getFilmById = (id)=> async(dispatch) => {
     /**Setting the dispatch for loading the films-->rk */

@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { AiOutlineSearch } from 'react-icons/ai';
 import PropTypes from 'prop-types';

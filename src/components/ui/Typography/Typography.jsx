@@ -1,5 +1,32 @@
-import React from "react";
 import clsx from "clsx";
+import PropTypes from "prop-types";
+
+// Proptypes for Typography
+H1heading.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
+H2heading.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
+H3heading.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
+H4heading.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
+H5heading.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
+H6heading.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
+
 export const H1heading = ({ children, className }) => {
   return (
     <h1
@@ -54,3 +81,4 @@ export const H6heading = ({ children, className }) => {
     </h6>
   );
 };
+

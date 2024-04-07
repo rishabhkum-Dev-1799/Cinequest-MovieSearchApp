@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 
 import StartSearchImage from "src/assets/Images/start_search.png"

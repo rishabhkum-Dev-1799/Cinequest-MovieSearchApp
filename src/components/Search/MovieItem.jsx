@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import Proptypes from 'prop-types';
 
@@ -10,7 +9,7 @@ import {
 import NoPoster from 'src/assets/Images/no-poster.jpg';
 
 
-const MovieItem = ({ idx, movieData }) => {
+const MovieItem = ({ movieData }) => {
   return (
     <motion.div
       className='w-full rounded-lg overflow-hidden shadow-lg cursor-pointer  bg-gray-800 border-gray-700 flex flex-col gap-2 items-center justify-center'

@@ -1,5 +1,3 @@
-import React from 'react'
-
 /**  custom imports */
 import { H2heading } from 'src/components/ui'
 import { en_titles } from 'src/lang'

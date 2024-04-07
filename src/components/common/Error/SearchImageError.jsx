@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 
 import SearchErrorImage from "src/assets/Images/search_error.png"
