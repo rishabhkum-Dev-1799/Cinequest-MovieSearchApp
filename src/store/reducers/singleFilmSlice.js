@@ -14,7 +14,8 @@ const singleFilmSlice=createSlice({
     initialState,
     reducers:{
         isFilmLoading:(state)=>{
-            state.loading=true;
+            state.loading=true
+            state.error=null;
         },
         getFilmSuccess:(state,action)=>{
             state.film=action.payload;

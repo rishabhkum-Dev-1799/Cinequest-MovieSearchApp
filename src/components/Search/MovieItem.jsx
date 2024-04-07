@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Proptypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 import { H3heading } from '../ui';
 import {
@@ -10,6 +11,7 @@ import NoPoster from 'src/assets/Images/no-poster.jpg';
 
 
 const MovieItem = ({ movieData }) => {
+  const navigate=useNavigate();
   return (
     <motion.div
       className='w-full rounded-lg overflow-hidden shadow-lg cursor-pointer  bg-gray-800 border-gray-700 flex flex-col gap-2 items-center justify-center'
@@ -22,6 +24,7 @@ const MovieItem = ({ movieData }) => {
       //   0.2,
       //   0.5
       // )}
+      onClick={()=>navigate(`/${movieData?.imdbID}`)}
     >
       <div className='overflow-hidden w-full max-w-[500px] h-[400px]'>
         <img

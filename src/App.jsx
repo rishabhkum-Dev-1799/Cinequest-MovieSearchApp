@@ -5,16 +5,18 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // Custom Components 
 import NavigationWrapper from './components/Navigation/NavigationWrapper';
-const CineSearchPage = lazy(()=>import("src/pages/CineSearchPage"))
+import MovieDetailsPage from 'src/pages/MovieDetailsPage';
+import CineSearchPage from 'src/pages/CineSearchPage';
 
 function App() {
   return (
-    <main>
+    <main className='min-h-[100vh] max-container'>
       {/* Adding Toast Container */}
       <ToastContainer/>
       <NavigationWrapper>
       <Routes>
         <Route path='/*' element={<CineSearchPage/>}/>
+        <Route path="/:id" element={<MovieDetailsPage />} />
       </Routes>
       </NavigationWrapper>
     </main>
