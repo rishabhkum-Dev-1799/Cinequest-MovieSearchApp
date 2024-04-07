@@ -3,7 +3,7 @@ import React from 'react'
 /**  custom imports */
 import { H2heading } from 'src/components/ui'
 import { en_titles } from 'src/lang'
-import CineQuestLogo from "../../../public/assests/logo/cinequest_logo.png"
+import CineQuestLogo from "src/assets/Images/cinequest_logo.png"
 
 
 

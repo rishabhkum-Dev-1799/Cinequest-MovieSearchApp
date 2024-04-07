@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import {v4 as uuid} from "uuid";
+import React, { useState, useEffect, useRef } from 'react';
+import { AiOutlineArrowUp } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import MoviesList from 'src/components/Search/MoviesList';
 
 import SearchBar from 'src/components/Search/SearchBar';
 import SearchInfo from 'src/components/Search/SearchInfo';
+import {
+  scrollToTop,
+  shouldShowScrollToTop,
+} from 'src/helper/domManipulationHelper';
 import { useActions } from 'src/hooks/useActions';
 import { useDebounce } from 'src/hooks/useDebounce';
 
@@ -13,12 +17,28 @@ const CineSearchPage = () => {
     searchQuery: 'Titanic',
     page: 1,
   });
+  const [isScrollToTopVisible, setIsScrollToTopVisible] = useState(false);
+  const containerRef = useRef(null);
+  /** hooks and store functions*/
   const { getSearchFilms, resetFilms } = useActions();
   const debouncedFetchFilmsWrapper = useDebounce(getSearchFilms, 500);
   const { error, totalFilms } = useSelector((state) => state.multiFilms);
 
+  // handler functions
+  const setSearchQueryHandler = (searchQuery) => {
+    setQueryDetails((prevValue) => ({
+      ...prevValue,
+      searchQuery: searchQuery,
+    }));
+  };
+  const onScrollHandler = () => {
+    const shouldScroll = shouldShowScrollToTop(containerRef.current);
+    if (shouldScroll !== isScrollToTopVisible) {
+      setIsScrollToTopVisible(shouldScroll);
+    }
+  };
   //UseEffects for Side Effect Handling
-  /**This Effect will fetch the results as the user writes into the search panel */
+  /**This Effect will fetch the results as the user writes into the search panel -->rk*/
   useEffect(() => {
     if (queryDetails?.page > Math.ceil(totalFilms / 10)) return;
     if (queryDetails?.searchQuery.trim()) {
@@ -35,17 +55,11 @@ const CineSearchPage = () => {
     setQueryDetails((prevValue) => ({ ...prevValue, page: 1 }));
   }, [queryDetails?.searchQuery]);
 
-  // handler functions
-  const setSearchQueryHandler = (searchQuery) => {
-    setQueryDetails((prevValue) => ({
-      ...prevValue,
-      searchQuery: searchQuery,
-    }));
-  };
-  console.log(queryDetails.searchQuery);
-
   return (
-    <div className='p-4 w-full h-full  overflow-y-scroll flex flex-col gap-4 items-center '>
+    <div
+      className='p-4 w-full h-full  overflow-y-scroll flex flex-col gap-4 items-center '
+      ref={containerRef}
+      onScroll={onScrollHandler}>
       {/* Search Intro */}
       <div className='w-full'>
         <SearchInfo />
@@ -59,8 +73,19 @@ const CineSearchPage = () => {
       </div>
       {/* Search Results */}
       <div className='w-full'>
-        <MoviesList setPage={() => console.log('Hello')} />
+        <MoviesList setPage={setQueryDetails} />
       </div>
+      {/**Scroll to top Button ----*/}
+      {isScrollToTopVisible && (
+        <div
+          className='w-[50px] h-[50px] z-50 cursor-pointer rounded-full fixed bottom-2 right-3 bg-black flex items-center justify-center text-white hover:scale-105 '
+          onClick={()=>scrollToTop(containerRef.current)}>
+          <AiOutlineArrowUp
+            fontSize={32}
+            fontWeight='bold'
+          />
+        </div>
+      )}
     </div>
   );
 };
