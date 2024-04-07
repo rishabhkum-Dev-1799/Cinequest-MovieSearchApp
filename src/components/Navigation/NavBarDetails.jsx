@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 /**  custom imports */
 import { H2heading } from 'src/components/ui';
 import { en_titles } from 'src/lang';
 import CineQuestLogo from 'src/assets/Images/cinequest_logo.png';
 import { navigationLinks } from 'src/data';
 import { cineFadeIn } from 'src/utils/motion';
-const NavBarDetails = () => {
+const NavBarDetails = ({ onNavigation }) => {
   return (
     <>
-        <div className='w-full flex flex-col items-center justify-center'>
+      <div className='w-full flex flex-col items-center justify-center'>
         <div className='w-[80px] overflow-hidden'>
           <img
             src={CineQuestLogo}
@@ -31,17 +32,22 @@ const NavBarDetails = () => {
               initial='hidden'
               animate='show'
               variants={cineFadeIn('up', 'tween', 0.5, 0.5)}
+              onClick={() => onNavigation(link?.href)}
               whileHover={{ scale: 1.1 }}>
-              <Link
-                to={link?.href}
-                className='w-full flex items-center justify-center'>
-                {link?.title}
-              </Link>
+              <p className='w-full flex items-center justify-center'>
+                {link.title}
+              </p>
             </motion.div>
           ))}
           {/* Wishlist sections */}
-          <motion.div className='w-full text-center border-b-2 border-bg_primary ' initial="hidden" animate="show" variants={cineFadeIn("up","tween",0.7,0.7)}>
-            <motion.p className='text-white text-xl font-semibold'>My Watchlist</motion.p>
+          <motion.div
+            className='w-full text-center border-b-2 border-bg_primary '
+            initial='hidden'
+            animate='show'
+            variants={cineFadeIn('up', 'tween', 0.7, 0.7)}>
+            <motion.p className='text-white text-xl font-semibold'>
+              My Watchlist
+            </motion.p>
           </motion.div>
         </div>
         {/* Login and Logout Sections */}
@@ -50,16 +56,22 @@ const NavBarDetails = () => {
           initial='hidden'
           animate='show'
           variants={cineFadeIn('up', 'tween', 0.9, 0.5)}
-          whileHover={{ scale: 1.1 }}>
-          <Link
+          whileHover={{ scale: 1.1 }}
+          onClick={() => onNavigation("/")}
+          >
+            <p className='w-full flex items-center justify-center'>Login</p>
+          {/* <Link
             to={'/'}
             className='w-full flex items-center justify-center'>
-            {"Login"}
-          </Link>
+            {'Login'}
+          </Link> */}
         </motion.div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default NavBarDetails
+NavBarDetails.propTypes = {
+  onNavigation: PropTypes.func.isRequired,
+};
+export default NavBarDetails;

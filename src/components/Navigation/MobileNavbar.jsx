@@ -3,12 +3,19 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
+import { useNavigate } from 'react-router-dom';
 
 import NavBarDetails from './NavBarDetails';
 import { cineFadeIn } from 'src/utils/motion';
 
 const MobileNavbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const navigate=useNavigate();
+
+  const onNavigationHandler=(href)=>{
+    setIsDrawerOpen((prevValue) => !prevValue);
+    navigate(href);
+  }
   return (
     <>
       <div
@@ -28,7 +35,7 @@ const MobileNavbar = () => {
           whileInView='show'
           variants={cineFadeIn('right', 'tween', 0.2, 0.5)}>
           <div className='w-full h-full relative'>
-            <NavBarDetails />
+            <NavBarDetails onNavigation={onNavigationHandler}/>
           </div>
         </motion.div>
       )}
