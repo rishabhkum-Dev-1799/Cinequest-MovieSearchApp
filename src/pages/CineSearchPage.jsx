@@ -74,7 +74,7 @@ const CineSearchPage = () => {
         />
       </div>
       {/* Search Results */}
-      {queryDetails?.searchQuery!==" "&&<div className='w-full'>
+      {queryDetails?.searchQuery&&<div className='w-full'>
         <MoviesList setPage={setQueryDetails} />
       </div>}
       {/**Scroll to top Button ----*/}
@@ -89,13 +89,13 @@ const CineSearchPage = () => {
         </div>
       )}
       {/* End of the Images Results Message */}
-      {queryDetails.page>Math.ceil(totalFilms/10)&& !error && (
+      {queryDetails.page>Math.ceil(totalFilms/10)&& !error && !loading && (
         <div className="mt-3 h-[50px] w-full text-center text-xl font-bold text-navbar_bg ">
           {en_titles?.endOfResults}
       </div>
       )}
       {/* Empty Search Results */}
-      {queryDetails.searchQuery==="" && !loading  &&(
+      {!queryDetails.searchQuery &&(
           <div className='w-full flex items-start justify-center'>
               <StartSearch/>
           </div>
