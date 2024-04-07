@@ -9,7 +9,8 @@ export default {
       colors:{
         text_primary:"#fff",
         input_bg_dark:"#fff",
-        navbar_bg:"#2c3e50"
+        navbar_bg:"#2c3e50",
+        bg_primary:"#DDDDDD"
       },
       screens: {
         'sm': '480px',

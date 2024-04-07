@@ -80,7 +80,7 @@ const CineSearchPage = () => {
       {/**Scroll to top Button ----*/}
       {isScrollToTopVisible && (
         <div
-          className='w-[50px] h-[50px] z-50 cursor-pointer rounded-full fixed bottom-2 right-3 bg-black flex items-center justify-center text-white hover:scale-105 '
+          className='w-[50px] h-[50px] z-30 cursor-pointer rounded-full fixed bottom-2 right-3 bg-black flex items-center justify-center text-white hover:scale-105 '
           onClick={()=>scrollToTop(containerRef.current)}>
           <AiOutlineArrowUp
             fontSize={32}

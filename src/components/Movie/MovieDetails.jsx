@@ -15,7 +15,7 @@ const MovieDetails = ({film,onBack}) => {
         onBack();
     }
   return (
-    <div className='w-full flex flex-col items-center justify-center gap-4 md:flex-row  md:justify-between md:items-start  lg:gap-4 p-2 '>
+    <div className='w-full flex flex-col items-center justify-center gap-4 md:mt-4 md:flex-row  md:justify-between md:items-start  lg:gap-4 p-2 '>
           {/* Image and Rating Section */}
           <motion.div
             className='w-full md:w-1/3 flex flex-col p-2  items-center justify-between gap-4 max-w-[500px] overflow-hidden'
