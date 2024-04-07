@@ -11,6 +11,7 @@ import {
 } from 'src/helper/domManipulationHelper';
 import { useActions } from 'src/hooks/useActions';
 import { useDebounce } from 'src/hooks/useDebounce';
+import { en_titles } from 'src/lang';
 
 const CineSearchPage = () => {
   const [queryDetails, setQueryDetails] = useState({
@@ -85,6 +86,12 @@ const CineSearchPage = () => {
             fontWeight='bold'
           />
         </div>
+      )}
+      {/* End of the Images Results Message */}
+      {queryDetails.page>Math.ceil(totalFilms/10)&& !error && (
+        <div className="mt-3 h-[50px] w-full text-center text-xl font-bold text-navbar_bg ">
+          {en_titles?.endOfResults}
+      </div>
       )}
     </div>
   );
