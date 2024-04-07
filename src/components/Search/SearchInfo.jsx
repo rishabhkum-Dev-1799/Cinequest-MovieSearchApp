@@ -16,7 +16,15 @@ const SearchInfo = () => {
         />
       </div>
       <motion.h1
-        className='text-3xl font-bold text-white lg:text-5xl text-bg-gradient'
+        className='block md:hidden text-4xl font-bold text-white  uppercase lg:text-5xl text-bg-gradient'
+        variants={cineTextVariant(0.5)}
+        initial='hidden'
+        animate='show'
+      >
+        {en_titles?.title}
+      </motion.h1>
+      <motion.h1
+        className='hidden md:block text-3xl font-bold text-white lg:text-5xl text-bg-gradient'
         variants={cineTextVariant(0.5)}
         initial='hidden'
         animate='show'
