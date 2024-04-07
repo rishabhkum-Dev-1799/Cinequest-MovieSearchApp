@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import Navbar from './Navbar';
-import Header from 'src/components/header/Header';
 import MobileNavbar from './MobileNavbar';
 
 const NavigationWrapper = ({ children }) => {

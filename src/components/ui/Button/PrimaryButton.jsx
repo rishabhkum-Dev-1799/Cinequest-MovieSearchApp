@@ -20,7 +20,7 @@ const PrimaryButton = ({ label, onClick }) => {
   );
 };
 
-PrimaryButton.prototype = {
+PrimaryButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
 };
