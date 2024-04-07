@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
 
 import MovieItem from './MovieItem';
+import DataFetchLoader from 'src/components/common/Loaders/DataFetchLoader';
 
 const MoviesList = ({ setPage}) => {
   const { films, loading, error } = useSelector((state) => state.multiFilms);
@@ -32,11 +33,23 @@ const MoviesList = ({ setPage}) => {
       {!error && films.length > 0 && (
         <div className='w-full p-2 overflow-hidden grid gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:max-4xl:grid-col-5'>
           {films.map((film, index) => (
-            <MovieItem key={uuid()} movieData={film} idx={index} />
+            <MovieItem
+              key={uuid()}
+              movieData={film}
+              idx={index}
+            />
           ))}
         </div>
       )}
-      <div className="h-10 w-full" ref={intersectionRef} />
+      {loading && (
+        <div className='my-2 w-full flex items-center justify-center text-center'>
+          <DataFetchLoader/>
+        </div>
+      )}
+      <div
+        className='h-10 w-full'
+        ref={intersectionRef}
+      />
     </section>
   );
 };
