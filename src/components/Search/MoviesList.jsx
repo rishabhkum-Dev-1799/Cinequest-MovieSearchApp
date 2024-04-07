@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 
 import MovieItem from './MovieItem';
 import DataFetchLoader from 'src/components/common/Loaders/DataFetchLoader';
+import SearchImageError from '../common/Error/SearchImageError';
+import StartSearch from '../common/Placeholders/StartSearch';
 
 const MoviesList = ({ setPage}) => {
   const { films, loading, error } = useSelector((state) => state.multiFilms);
@@ -28,6 +30,13 @@ const MoviesList = ({ setPage}) => {
       };
     });
   }, [intersectionRef.current]);
+
+  if(error){
+    return (<div className='w-full flex items-center justify-center'>
+        {error === "Incorrect IMDb ID." && <StartSearch/>}
+        {error !== "Incorrect IMDb ID." && <SearchImageError errorMessage={error==="Too many results."?"To Many Results Please Search More Specific Movie Name":error}/>}
+    </div>
+  )}
   return (
     <section className='w-full overflow-hidden'>
       {!error && films.length > 0 && (

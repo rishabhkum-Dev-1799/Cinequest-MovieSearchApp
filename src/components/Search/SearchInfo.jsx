@@ -9,11 +9,11 @@ import CineQuestLogo from "src/assets/Images/cinequest_logo.png"
 const SearchInfo = () => {
   return (
     <div className='w-full flex flex-col gap-4  p-2 lg:p-4 text-center relative'>
-      <div className='lg:hidden flex  w-[40px]'>
+      <div className='w-full lg:hidden flex  justify-end'>
         <img
           src={CineQuestLogo}
           alt='cinequest_logo'
-          className='w-full object-contain'
+          className='w-[40px] object-contain'
         />
       </div>
       <motion.h1

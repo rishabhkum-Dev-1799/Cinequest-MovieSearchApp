@@ -5,6 +5,7 @@ import MoviesList from 'src/components/Search/MoviesList';
 
 import SearchBar from 'src/components/Search/SearchBar';
 import SearchInfo from 'src/components/Search/SearchInfo';
+import StartSearch from 'src/components/common/Placeholders/StartSearch';
 import {
   scrollToTop,
   shouldShowScrollToTop,
@@ -23,7 +24,7 @@ const CineSearchPage = () => {
   /** hooks and store functions*/
   const { getSearchFilms, resetFilms } = useActions();
   const debouncedFetchFilmsWrapper = useDebounce(getSearchFilms, 500);
-  const { error, totalFilms } = useSelector((state) => state.multiFilms);
+  const { error, totalFilms ,loading } = useSelector((state) => state.multiFilms);
 
   // handler functions
   const setSearchQueryHandler = (searchQuery) => {
@@ -73,9 +74,9 @@ const CineSearchPage = () => {
         />
       </div>
       {/* Search Results */}
-      <div className='w-full'>
+      {queryDetails?.searchQuery!==" "&&<div className='w-full'>
         <MoviesList setPage={setQueryDetails} />
-      </div>
+      </div>}
       {/**Scroll to top Button ----*/}
       {isScrollToTopVisible && (
         <div
@@ -92,6 +93,12 @@ const CineSearchPage = () => {
         <div className="mt-3 h-[50px] w-full text-center text-xl font-bold text-navbar_bg ">
           {en_titles?.endOfResults}
       </div>
+      )}
+      {/* Empty Search Results */}
+      {queryDetails.searchQuery==="" && !loading  &&(
+          <div className='w-full flex items-start justify-center'>
+              <StartSearch/>
+          </div>
       )}
     </div>
   );
