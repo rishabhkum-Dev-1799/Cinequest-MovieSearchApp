@@ -17,3 +17,11 @@ export const insertUserInSessionStorage=(data)=>{
 export const removeUserFromSessionStorage=()=>{
     sessionStorage.removeItem(LOGGED_IN_USER_KEY)
 }
+
+/** 
+ * @returns This function will return the user Data from the session storage
+ */
+export const getUserFromSessionStorage=()=>{
+    const userData=sessionStorage.getItem(LOGGED_IN_USER_KEY);
+    return userData?JSON.parse(userData):null;
+}

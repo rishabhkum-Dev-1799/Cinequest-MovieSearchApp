@@ -9,7 +9,7 @@ import CineQuestLogo from 'src/assets/Images/cinequest_logo.png';
 import { navigationLinks } from 'src/data';
 import { cineFadeIn } from 'src/utils/motion';
 const NavBarDetails = ({ onNavigation }) => {
-  const {isLoggedIn,userEmail}=useSelector(state=>state.authentication)
+  const {isLoggedIn}=useSelector(state=>state.authentication)
   const {logoutAction}=useActions()
   const sessionHandler=()=>{
     if(isLoggedIn){
@@ -53,13 +53,18 @@ const NavBarDetails = ({ onNavigation }) => {
           ))}
           {/* Wishlist sections */}
           <motion.div
-            className='w-full text-center border-b-2 border-bg_primary '
+            className='w-full text-center '
             initial='hidden'
             animate='show'
             variants={cineFadeIn('up', 'tween', 0.7, 0.7)}>
-            <motion.p className='text-white text-xl font-semibold'>
-              My Watchlist
-            </motion.p>
+            <div className='text-white text-xl font-semibold border-b-2 border-bg_primar'>
+              <p>My Watchlist</p>
+            </div>
+            {!isLoggedIn && (
+              <div className='text-lg text-white font-semibold mt-10 bg-orange-500/70 shadow-xl rounded-lg p-2'>
+                <p>Login to Access Watchlist Feature</p>
+              </div>
+            )}
           </motion.div>
         </div>
         {/* Login and Logout Sections */}
@@ -69,9 +74,10 @@ const NavBarDetails = ({ onNavigation }) => {
           animate='show'
           variants={cineFadeIn('up', 'tween', 0.9, 0.5)}
           whileHover={{ scale: 1.1 }}
-          onClick={sessionHandler}
-          >
-            <p className='w-full flex items-center justify-center'>{isLoggedIn ?"Logout":"Login"}</p>
+          onClick={sessionHandler}>
+          <p className='w-full flex items-center justify-center'>
+            {isLoggedIn ? 'Logout' : 'Login'}
+          </p>
           {/* <Link
             to={'/'}
             className='w-full flex items-center justify-center'>

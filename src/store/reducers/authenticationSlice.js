@@ -1,11 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getUserFromSessionStorage } from "src/helper/localStorage";
 
+/**Getting session storage if the user is logged in */
+const sessionStorageUser=getUserFromSessionStorage();
+/** Defining the initial states */
 const initialStates={
-    isLoggedIn:false,
-    userEmail:null,
-    userFirstName:null
+    isLoggedIn:sessionStorageUser?sessionStorageUser?.isLoggedIn:false,
+    userEmail:sessionStorageUser?sessionStorageUser?.userEmail:null,
+    userFirstName:sessionStorageUser?sessionStorageUser?.userFirstName:null
 }
-
+/** Created the authentication slice */
 const authenticationSlice = createSlice({
     name:"authentication",
     initialState:initialStates,
