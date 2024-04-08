@@ -22,4 +22,6 @@ export const labels = {
   movieDetails: 'Movie Details:',
   loginInfoLabel:"Login and Enjoy the Full Features of cinequest",
   signUpInfoLabel:"Sign Up and Enjoy the Full Features of cinequest",
+  loginSuccess:"Login Successful",
+  logoutSuccess:"Logout Successful",
 };

@@ -78,11 +78,6 @@ const NavBarDetails = ({ onNavigation }) => {
           <p className='w-full flex items-center justify-center'>
             {isLoggedIn ? 'Logout' : 'Login'}
           </p>
-          {/* <Link
-            to={'/'}
-            className='w-full flex items-center justify-center'>
-            {'Login'}
-          </Link> */}
         </motion.div>
       </div>
     </>
