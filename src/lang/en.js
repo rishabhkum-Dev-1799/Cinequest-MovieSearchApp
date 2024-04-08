@@ -7,7 +7,8 @@ export const en_titles = {
 
 export const btnLabels = {
   back: 'Back',
-  errorBack:"Back to Main Page"
+  errorBack:"Back to Main Page",
+  login: 'Login',
 };
 
 export const labels = {
@@ -18,4 +19,5 @@ export const labels = {
   country: 'Country',
   released: 'Released',
   movieDetails: 'Movie Details:',
+  loginInfoLabel:"Login and Enjoy the Full Features of cinequest"
 };
