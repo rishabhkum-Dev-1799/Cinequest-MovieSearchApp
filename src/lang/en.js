@@ -9,6 +9,7 @@ export const btnLabels = {
   back: 'Back',
   errorBack:"Back to Main Page",
   login: 'Login',
+  signUp:'Sign Up'
 };
 
 export const labels = {
@@ -19,5 +20,6 @@ export const labels = {
   country: 'Country',
   released: 'Released',
   movieDetails: 'Movie Details:',
-  loginInfoLabel:"Login and Enjoy the Full Features of cinequest"
+  loginInfoLabel:"Login and Enjoy the Full Features of cinequest",
+  signUpInfoLabel:"Sign Up and Enjoy the Full Features of cinequest",
 };
