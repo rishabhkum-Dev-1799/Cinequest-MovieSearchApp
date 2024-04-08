@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import {motion} from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 import FormWrapper from 'src/components/common/Wrapper/FormWrapper';
 import { FormInput } from 'src/components/ui';
-import PrimaryButton from 'src/components/ui/Button/PrimaryButton';
 import { useActions } from 'src/hooks/useActions';
 import { btnLabels, labels } from 'src/lang';
 import { cineFadeIn } from 'src/utils/motion';
@@ -14,6 +14,7 @@ const LoginPage = () => {
   const [formData, setFormData] = useState({
     email: '',
   });
+  const navigate = useNavigate()
 
   // handler functions
   const onChangeHandler = (event) => {
@@ -23,6 +24,7 @@ const LoginPage = () => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     loginAction(formData?.email);
+    navigate("/")
   };
 
   return (
