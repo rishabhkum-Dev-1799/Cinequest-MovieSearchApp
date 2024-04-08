@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { useActions } from 'src/hooks/useActions';
 /**  custom imports */
 import { H2heading } from 'src/components/ui';
 import { en_titles } from 'src/lang';
@@ -7,6 +9,17 @@ import CineQuestLogo from 'src/assets/Images/cinequest_logo.png';
 import { navigationLinks } from 'src/data';
 import { cineFadeIn } from 'src/utils/motion';
 const NavBarDetails = ({ onNavigation }) => {
+  const {isLoggedIn,userEmail}=useSelector(state=>state.authentication)
+  const {logoutAction}=useActions()
+  const sessionHandler=()=>{
+    if(isLoggedIn){
+      logoutAction();
+      onNavigation("/")
+    }else{
+      onNavigation("/login")
+    }
+    
+  }
   return (
     <>
       <div className='w-full flex flex-col items-center justify-center'>
@@ -56,9 +69,9 @@ const NavBarDetails = ({ onNavigation }) => {
           animate='show'
           variants={cineFadeIn('up', 'tween', 0.9, 0.5)}
           whileHover={{ scale: 1.1 }}
-          onClick={() => onNavigation("/login")}
+          onClick={sessionHandler}
           >
-            <p className='w-full flex items-center justify-center'>Login</p>
+            <p className='w-full flex items-center justify-center'>{isLoggedIn ?"Logout":"Login"}</p>
           {/* <Link
             to={'/'}
             className='w-full flex items-center justify-center'>

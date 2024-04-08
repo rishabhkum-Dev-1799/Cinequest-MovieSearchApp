@@ -59,7 +59,7 @@ const MovieDetailsPage = () => {
   }
   return (
     <div className='w-full h-full'>
-      <div className='max-container w-full h-full overflow-y-scroll p-4 flex flex-col gap-4'>
+      <div className='w-full h-full overflow-y-scroll p-4 flex flex-col gap-4'>
         {film && (
           <MovieDetails
             film={film}
