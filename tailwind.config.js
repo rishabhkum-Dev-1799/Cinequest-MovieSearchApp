@@ -10,7 +10,8 @@ export default {
         text_primary:"#fff",
         input_bg_dark:"#fff",
         navbar_bg:"#2c3e50",
-        bg_primary:"#DDDDDD"
+        bg_primary:"#DDDDDD",
+        btn_primary:"#E86A92"
       },
       screens: {
         'sm': '480px',

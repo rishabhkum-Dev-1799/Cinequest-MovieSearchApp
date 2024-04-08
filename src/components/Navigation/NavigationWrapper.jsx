@@ -4,7 +4,7 @@ import MobileNavbar from './MobileNavbar';
 
 const NavigationWrapper = ({ children }) => {
   return (
-    <div className='w-full flex items-center gap-4'>
+    <div className='w-full lg:flex lg:items-center lg:gap-4'>
       <section className='hidden lg:block lg:w-[30vw] lg:h-screen max-w-[250px]'>
         <Navbar />
       </section>

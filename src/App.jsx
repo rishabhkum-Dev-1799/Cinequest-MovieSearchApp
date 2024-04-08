@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import NavigationWrapper from './components/Navigation/NavigationWrapper';
 import MovieDetailsPage from 'src/pages/MovieDetailsPage';
 import CineSearchPage from 'src/pages/CineSearchPage';
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <Routes>
         <Route path='/*' element={<CineSearchPage/>}/>
         <Route path="/:id" element={<MovieDetailsPage />} />
+        <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/sign-up" element={<SignUpPage/>}/>
       </Routes>
       </NavigationWrapper>
     </main>

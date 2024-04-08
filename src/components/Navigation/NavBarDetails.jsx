@@ -56,7 +56,7 @@ const NavBarDetails = ({ onNavigation }) => {
           animate='show'
           variants={cineFadeIn('up', 'tween', 0.9, 0.5)}
           whileHover={{ scale: 1.1 }}
-          onClick={() => onNavigation("/")}
+          onClick={() => onNavigation("/login")}
           >
             <p className='w-full flex items-center justify-center'>Login</p>
           {/* <Link
