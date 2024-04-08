@@ -11,7 +11,7 @@ import SignUpPage from "./pages/SignUpPage";
 
 function App() {
   return (
-    <main className='min-h-[100vh] max-container'>
+    <main className='min-h-[100vh]'>
       {/* Adding Toast Container */}
       <ToastContainer/>
       <NavigationWrapper>

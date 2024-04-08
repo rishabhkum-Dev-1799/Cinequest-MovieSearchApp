@@ -24,12 +24,11 @@ const LoginPage = () => {
     event.preventDefault();
     loginAction(formData?.email);
   };
-  console.log('labels', formData?.email);
 
   return (
     <div className='w-full h-full flex items-center justify-center'>
       <FormWrapper
-        label={'Login'}
+        label={btnLabels?.login}
         infoLabel={labels?.loginInfoLabel}>
         <form
           className='flex flex-col gap-2 w-full'

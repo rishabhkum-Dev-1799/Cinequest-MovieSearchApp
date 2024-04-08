@@ -8,7 +8,7 @@ import { en_titles } from 'src/lang';
 const FormWrapper = ({ label,infoLabel, children }) => {
   return (
     <motion.div
-      className='w-[95%] md:w-[50%]  rounded-lg p-4 bg-navbar_bg flex flex-col gap-2 '
+      className='w-[95%] md:w-[50%] max-w-[800px]  rounded-lg p-4 bg-navbar_bg flex flex-col gap-2 '
       initial='hidden'
       animate='show'
       variants={cineFadeIn('up', 'tween', 0.2, 0.5)}>

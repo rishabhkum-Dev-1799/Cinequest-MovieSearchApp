@@ -59,7 +59,7 @@ const CineSearchPage = () => {
 
   return (
     <div
-      className='max-container p-4 w-full h-full  overflow-y-scroll flex flex-col gap-4 items-center '
+      className='p-4 w-full h-full  overflow-y-scroll flex flex-col gap-4 items-center '
       ref={containerRef}
       onScroll={onScrollHandler}>
       {/* Search Intro */}

@@ -40,7 +40,7 @@ const MoviesList = ({ setPage}) => {
   return (
     <section className='w-full overflow-hidden'>
       {!error && films.length > 0 && (
-        <div className='w-full p-2 overflow-hidden grid gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:max-4xl:grid-col-5'>
+        <div className='w-full p-2 overflow-hidden grid gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-5'>
           {films.map((film, index) => (
             <MovieItem
               key={uuid()}
