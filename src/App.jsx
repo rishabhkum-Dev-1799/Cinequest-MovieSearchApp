@@ -8,6 +8,7 @@ import MovieDetailsPage from 'src/pages/MovieDetailsPage';
 import CineSearchPage from 'src/pages/CineSearchPage';
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
+import WatchlistPage from "./pages/WatchlistPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/:id" element={<MovieDetailsPage />} />
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/sign-up" element={<SignUpPage/>}/>
+        <Route path="/my-watch-list" element={<WatchlistPage/>}/>
       </Routes>
       </NavigationWrapper>
     </main>
