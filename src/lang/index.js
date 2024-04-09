@@ -1,6 +1,6 @@
-import { en_titles,btnLabels,labels } from "./en";
+import { en_titles,btnLabels,labels,errorMessages } from "./en";
 
 
 export {
-    en_titles,btnLabels,labels
+    en_titles,btnLabels,labels,errorMessages
 }

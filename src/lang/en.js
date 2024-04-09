@@ -25,3 +25,8 @@ export const labels = {
   loginSuccess:"Login Successful",
   logoutSuccess:"Logout Successful",
 };
+
+export const errorMessages={
+  userNotFound:"User Not Found!! Please Sign Up to Continue",
+  userNotLoggedInWatchListError:"Please Login to Add Movie to WishList"
+}

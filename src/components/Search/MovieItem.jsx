@@ -12,6 +12,7 @@ import {
 import NoPoster from 'src/assets/Images/no-poster.jpg';
 import Button from '../ui/Button/Button';
 import { getToastErrorMessage } from 'src/helper/toastFunctions';
+import { errorMessages } from 'src/lang';
 
 const MovieItemComponent = ({ movieData,isLoggedIn }) => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const MovieItemComponent = ({ movieData,isLoggedIn }) => {
     e.preventDefault();
     e.stopPropagation();
     if(!isLoggedIn){
-      getToastErrorMessage("Please Login to Add Movie to WishList");
+      getToastErrorMessage(errorMessages?.userNotLoggedInWatchListError);
       return;
     }
     setIsMovieAddedToWishList((prevValue)=>!prevValue);
