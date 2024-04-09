@@ -20,7 +20,7 @@ const multiFilmSlice= createSlice({
             state.loading=true;
         },
         getFilmsSuccess:(state,action)=>{
-            state.films=[...state.films,...action.payload];
+            state.films=state.films.concat(action.payload);
             state.loading=false;
         },
         getFilmsError:(state,action)=>{

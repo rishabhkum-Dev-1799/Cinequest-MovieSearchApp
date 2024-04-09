@@ -11,9 +11,9 @@ import {
 import NoPoster from 'src/assets/Images/no-poster.jpg';
 import { cineFadeIn } from 'src/utils/motion';
 import Button from '../ui/Button/Button';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
-const MovieItem = ({ movieData }) => {
+const MovieItemComponent = ({ movieData }) => {
   const navigate = useNavigate();
   const [isMovieAddedToWishList, setIsMovieAddedToWishList] = useState(false);
 
@@ -66,9 +66,9 @@ const MovieItem = ({ movieData }) => {
   );
 };
 
-MovieItem.propTypes = {
+MovieItemComponent.propTypes = {
   movieData: Proptypes.object.isRequired,
   idx: Proptypes.number.isRequired,
 };
-
+const MovieItem = memo(MovieItemComponent);
 export default MovieItem;

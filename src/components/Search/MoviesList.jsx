@@ -1,4 +1,4 @@
-import {useEffect, useRef } from 'react';
+import {useEffect, useRef,memo } from 'react';
 import { useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
@@ -8,7 +8,7 @@ import DataFetchLoader from 'src/components/common/Loaders/DataFetchLoader';
 import SearchImageError from '../common/Error/SearchImageError';
 import StartSearch from '../common/Placeholders/StartSearch';
 
-const MoviesList = ({ setPage}) => {
+const MoviesListComponent = memo(({ setPage}) => {
   const { films, loading, error } = useSelector((state) => state.multiFilms);
   const intersectionRef = useRef();
 
@@ -61,10 +61,11 @@ const MoviesList = ({ setPage}) => {
       />
     </section>
   );
-};
-MoviesList.propTypes = {
+});
+MoviesListComponent.propTypes = {
   setPage: PropTypes.func.isRequired,
   containerRef: PropTypes.object,
 };
 
+const MoviesList=memo(MoviesListComponent);
 export default MoviesList;
