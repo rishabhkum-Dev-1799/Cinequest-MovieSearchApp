@@ -33,7 +33,7 @@ const MovieItemComponent = ({ movieData }) => {
       onClick={() => navigate(`/${movieData?.imdbID}`)}
       >
       {/* Add to Watch List Buttoon */}
-      <Button className={'absolute z-50 w-[50px] h-[50px] top-2 right-2'} onClick={addToWatchListHandler}>
+      <Button className={'absolute z-20 w-[50px] h-[50px] top-2 right-2'} onClick={addToWatchListHandler}>
         {!isMovieAddedToWishList &&<FaRegBookmark
           className='text-white text-2xl'
           size={24}
@@ -70,5 +70,8 @@ MovieItemComponent.propTypes = {
   movieData: Proptypes.object.isRequired,
   idx: Proptypes.number.isRequired,
 };
-const MovieItem = memo(MovieItemComponent);
+const MovieItem = memo(MovieItemComponent,(oldProps,newProps)=>{
+  console.log("isChanged",Object.is(oldProps.movieData,newProps.movieData))
+  return Object.is(oldProps.movieData,newProps.movieData);
+});
 export default MovieItem;
