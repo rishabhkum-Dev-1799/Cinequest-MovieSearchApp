@@ -16,7 +16,7 @@ import { en_titles } from 'src/lang';
 
 const CineSearchPage = () => {
   const [queryDetails, setQueryDetails] = useState({
-    searchQuery: 'Titanic',
+    searchQuery: 'John Wick',
     page: 1,
   });
   const [isScrollToTopVisible, setIsScrollToTopVisible] = useState(false);
