@@ -1,4 +1,4 @@
-import { LOGGED_IN_USER_KEY } from "src/constants";
+import { LOGGED_IN_USER_KEY, WATCHLIST_DB } from "src/constants";
 
 /**
  * 
@@ -24,4 +24,25 @@ export const removeUserFromSessionStorage=()=>{
 export const getUserFromSessionStorage=()=>{
     const userData=sessionStorage.getItem(LOGGED_IN_USER_KEY);
     return userData?JSON.parse(userData):null;
+}
+
+/**
+ * 
+ * @param {object} data 
+ * @returns This function will return the watchlist data from the local storage
+ */
+export const getWatchListDetailsFromLocalStorage=(data)=>{
+    const watchListData = localStorage.getItem(WATCHLIST_DB);
+    return watchListData? JSON.parse(watchListData) :{}
+}
+
+
+/**
+ * 
+ * @param {object} data 
+ * @returns This function will update the watchlist data into the local storage
+ */
+export const updateWatchListDetailsInLocalStorage=(data)=>{
+    const stringifiedData=JSON.stringify(data);
+    localStorage.setItem(WATCHLIST_DB,stringifiedData)
 }
