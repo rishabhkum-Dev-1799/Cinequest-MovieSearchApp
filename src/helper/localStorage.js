@@ -33,7 +33,7 @@ export const getUserFromSessionStorage=()=>{
  */
 export const getWatchListDetailsFromLocalStorage=(data)=>{
     const watchListData = localStorage.getItem(WATCHLIST_DB);
-    return watchListData? JSON.parse(watchListData) :{}
+    return watchListData? JSON.parse(watchListData) :null
 }
 
 

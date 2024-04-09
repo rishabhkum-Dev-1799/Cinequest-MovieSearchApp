@@ -1,10 +1,16 @@
-import { updateWatchListDetailsInLocalStorage } from "src/helper/localStorage";
+import { getWatchListDetailsFromLocalStorage, updateWatchListDetailsInLocalStorage } from "src/helper/localStorage";
 
 import { createSlice } from "@reduxjs/toolkit";
 
+const watchListDb=getWatchListDetailsFromLocalStorage()
+
+if(!watchListDb){
+    updateWatchListDetailsInLocalStorage({})
+}
+
 /**Declaring the Initial State for the Watchlist Slice */
 const initialState={
-    watchListDb:{},
+    watchListDb:watchListDb || {},
     newUser:true
 }
 /**Creating the Slice Object and defining the reducer Action functions */
