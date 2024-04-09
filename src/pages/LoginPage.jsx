@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import {motion} from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +9,7 @@ import { btnLabels, labels } from 'src/lang';
 import { cineFadeIn } from 'src/utils/motion';
 
 const LoginPage = () => {
-  const { loginAction, logoutAction } = useActions();
+  const { loginAction} = useActions();
   const [formData, setFormData] = useState({
     email: '',
   });

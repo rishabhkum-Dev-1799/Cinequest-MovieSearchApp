@@ -1,4 +1,5 @@
-import { twJoin, twMerge } from 'tailwind-merge';
+import { twJoin } from 'tailwind-merge';
+import Proptypes from "prop-types"
 
 const Button = ({ children, onClick, className, ...props }) => {
     const onClickHandler=(e)=>{
@@ -16,5 +17,9 @@ const Button = ({ children, onClick, className, ...props }) => {
     </button>
   );
 };
-
+Button.propTypes={
+  children:Proptypes.node.isRequired,
+  onClick:Proptypes.func.isRequired,
+  className:Proptypes.string
+}
 export default Button;

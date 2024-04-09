@@ -9,7 +9,6 @@ import {
   generateHighResolutionImage,
 } from 'src/helper/manipulationFunc';
 import NoPoster from 'src/assets/Images/no-poster.jpg';
-import { cineFadeIn } from 'src/utils/motion';
 import Button from '../ui/Button/Button';
 import { memo, useState } from 'react';
 
