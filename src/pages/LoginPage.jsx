@@ -1,29 +1,38 @@
 import { useState } from 'react';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import FormWrapper from 'src/components/common/Wrapper/FormWrapper';
 import { FormInput } from 'src/components/ui';
 import { useActions } from 'src/hooks/useActions';
-import { btnLabels, labels } from 'src/lang';
+import { btnLabels, errorMessages, labels } from 'src/lang';
 import { cineFadeIn } from 'src/utils/motion';
+import { getToastErrorMessage } from 'src/helper/toastFunctions';
 
 const LoginPage = () => {
-  const { loginAction} = useActions();
+  const { loginAction } = useActions();
   const [formData, setFormData] = useState({
     email: '',
   });
-  const navigate = useNavigate()
+  const { watchListDb } = useSelector((state) => state.watchList);
+  const navigate = useNavigate();
 
   // handler functions
   const onChangeHandler = (event) => {
     const { value, name } = event.target;
     setFormData((prevValue) => ({ ...prevValue, [name]: value }));
   };
+  
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    loginAction(formData?.email);
-    navigate("/")
+    if (!watchListDb.hasOwnProperty(formData?.email)) {
+      getToastErrorMessage(errorMessages?.userNotFound);
+      return;
+    } else {
+      loginAction(formData?.email);
+      navigate('/');
+    }
   };
 
   return (
