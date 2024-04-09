@@ -8,8 +8,9 @@ import DataFetchLoader from 'src/components/common/Loaders/DataFetchLoader';
 import SearchImageError from '../common/Error/SearchImageError';
 import StartSearch from '../common/Placeholders/StartSearch';
 
-const MoviesListComponent = memo(({ setPage}) => {
+const MoviesListComponent = memo(({setPage}) => {
   const { films, loading, error } = useSelector((state) => state.multiFilms);
+  const {isLoggedIn}=useSelector((state)=>state.authentication);
   const intersectionRef = useRef();
 
   useEffect(() => {
@@ -46,6 +47,7 @@ const MoviesListComponent = memo(({ setPage}) => {
               key={uuid()}
               movieData={film}
               idx={index}
+              isLoggedIn={isLoggedIn}
             />
           ))}
         </div>

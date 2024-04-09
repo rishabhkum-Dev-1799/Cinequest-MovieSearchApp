@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { memo, useState } from 'react';
 import Proptypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { FaRegBookmark,FaBookmark } from 'react-icons/fa';
@@ -10,18 +11,21 @@ import {
 } from 'src/helper/manipulationFunc';
 import NoPoster from 'src/assets/Images/no-poster.jpg';
 import Button from '../ui/Button/Button';
-import { memo, useState } from 'react';
+import { getToastErrorMessage } from 'src/helper/toastFunctions';
 
-const MovieItemComponent = ({ movieData }) => {
+const MovieItemComponent = ({ movieData,isLoggedIn }) => {
   const navigate = useNavigate();
   const [isMovieAddedToWishList, setIsMovieAddedToWishList] = useState(false);
 
   // handler functions
   const addToWatchListHandler =(e)=>{
     e.preventDefault();
-    e.stopPropagation()
+    e.stopPropagation();
+    if(!isLoggedIn){
+      getToastErrorMessage("Please Login to Add Movie to WishList");
+      return;
+    }
     setIsMovieAddedToWishList((prevValue)=>!prevValue);
-    console.log('Add to Watch List');
   }
   return (
     <motion.div
@@ -67,7 +71,7 @@ const MovieItemComponent = ({ movieData }) => {
 
 MovieItemComponent.propTypes = {
   movieData: Proptypes.object.isRequired,
-  idx: Proptypes.number.isRequired,
+  isLoggedIn: Proptypes.bool.isRequired,
 };
 const MovieItem = memo(MovieItemComponent,(oldProps,newProps)=>{
   console.log("isChanged",Object.is(oldProps.movieData,newProps.movieData))
