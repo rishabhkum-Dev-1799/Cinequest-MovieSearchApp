@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux';
 import { useActions } from 'src/hooks/useActions';
 /**  custom imports */
 import { H2heading } from 'src/components/ui';
-import { en_titles } from 'src/lang';
+import { btnLabels, en_titles } from 'src/lang';
 import CineQuestLogo from 'src/assets/Images/cinequest_logo.png';
 import { navigationLinks } from 'src/data';
 import { cineFadeIn } from 'src/utils/motion';
+
 const NavBarDetails = ({ onNavigation }) => {
   const { isLoggedIn } = useSelector((state) => state.authentication);
   const { logoutAction } = useActions();
@@ -76,7 +77,7 @@ const NavBarDetails = ({ onNavigation }) => {
             whileHover={{ scale: 1.1 }}
             onClick={sessionHandler}>
             <p className='w-full flex items-center justify-center'>
-              {isLoggedIn ? 'Logout' : 'Login'}
+              {isLoggedIn ? btnLabels?.logout : btnLabels?.login}
             </p>
           </motion.div>
           {!isLoggedIn && (
@@ -88,7 +89,7 @@ const NavBarDetails = ({ onNavigation }) => {
               whileHover={{ scale: 1.1 }}
               onClick={()=>onNavigation("/sign-up")}>
               <p className='w-full flex items-center justify-center'>
-                {'Sign Up'}
+                {btnLabels?.signUp}
               </p>
             </motion.div>
           )}

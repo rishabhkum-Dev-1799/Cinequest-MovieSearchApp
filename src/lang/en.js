@@ -9,7 +9,8 @@ export const btnLabels = {
   back: 'Back',
   errorBack:"Back to Main Page",
   login: 'Login',
-  signUp:'Sign Up'
+  signUp:'Sign Up',
+  logout:'Logout'
 };
 
 export const labels = {
