@@ -9,17 +9,16 @@ import CineQuestLogo from 'src/assets/Images/cinequest_logo.png';
 import { navigationLinks } from 'src/data';
 import { cineFadeIn } from 'src/utils/motion';
 const NavBarDetails = ({ onNavigation }) => {
-  const {isLoggedIn}=useSelector(state=>state.authentication)
-  const {logoutAction}=useActions()
-  const sessionHandler=()=>{
-    if(isLoggedIn){
+  const { isLoggedIn } = useSelector((state) => state.authentication);
+  const { logoutAction } = useActions();
+  const sessionHandler = () => {
+    if (isLoggedIn) {
       logoutAction();
-      onNavigation("/")
-    }else{
-      onNavigation("/login")
+      onNavigation('/');
+    } else {
+      onNavigation('/login');
     }
-    
-  }
+  };
   return (
     <>
       <div className='w-full flex flex-col items-center justify-center'>
@@ -68,17 +67,32 @@ const NavBarDetails = ({ onNavigation }) => {
           </motion.div>
         </div>
         {/* Login and Logout Sections */}
-        <motion.div
-          className='absolute bottom-[20px] w-full lg:w-[200px] max-w-[400px] flex items-center justify-center p-2 rounded-lg bg-bg_primary/95  cursor-pointer text-navbar_bg font-semibold'
-          initial='hidden'
-          animate='show'
-          variants={cineFadeIn('up', 'tween', 0.9, 0.5)}
-          whileHover={{ scale: 1.1 }}
-          onClick={sessionHandler}>
-          <p className='w-full flex items-center justify-center'>
-            {isLoggedIn ? 'Logout' : 'Login'}
-          </p>
-        </motion.div>
+        <div className='absolute bottom-[20px] w-full lg:w-[200px] max-w-[400px] flex flex-col gap-6'>
+          <motion.div
+            className='w-full flex items-center justify-center p-2 rounded-lg bg-bg_primary/95  cursor-pointer text-navbar_bg font-semibold'
+            initial='hidden'
+            animate='show'
+            variants={cineFadeIn('up', 'tween', 0.9, 0.5)}
+            whileHover={{ scale: 1.1 }}
+            onClick={sessionHandler}>
+            <p className='w-full flex items-center justify-center'>
+              {isLoggedIn ? 'Logout' : 'Login'}
+            </p>
+          </motion.div>
+          {!isLoggedIn && (
+            <motion.div
+              className='w-full flex items-center justify-center p-2 rounded-lg bg-bg_primary/95  cursor-pointer text-navbar_bg font-semibold'
+              initial='hidden'
+              animate='show'
+              variants={cineFadeIn('up', 'tween', 0.9, 0.5)}
+              whileHover={{ scale: 1.1 }}
+              onClick={()=>onNavigation("/sign-up")}>
+              <p className='w-full flex items-center justify-center'>
+                {'Sign Up'}
+              </p>
+            </motion.div>
+          )}
+        </div>
       </div>
     </>
   );
