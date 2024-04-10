@@ -1,19 +1,25 @@
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 import FormWrapper from 'src/components/common/Wrapper/FormWrapper';
 import { useActions } from 'src/hooks/useActions';
 import { FormInput } from 'src/components/ui';
 import { btnLabels, labels } from 'src/lang';
 import { cineFadeIn } from 'src/utils/motion';
-import { useState } from 'react';
+import { getToastErrorMessage } from 'src/helper/toastFunctions';
+
 
 const SignUpPage = () => {
-  const { loginAction, logoutAction } = useActions();
   const [formData, setFormData] = useState({
     email: '',
     userFirstName:'',
   });
-
+  const { addNewUserAction,loginAction } = useActions();
+  const {watchListDb}=useSelector(state=>state.watchList)
+  const navigate=useNavigate();
+  
   // handler functions
   const onChangeHandler = (event) => {
     const { value, name } = event.target;
@@ -21,6 +27,16 @@ const SignUpPage = () => {
   };
   const onSubmitHandler = (event) => {
     event.preventDefault();
+    if(watchListDb.hasOwnProperty(formData?.email)){
+      getToastErrorMessage("User Already Exists! Please Login to Continue")
+      return;
+    }
+    else {
+      addNewUserAction(formData?.email);
+      loginAction(formData?.email);
+      navigate("/")
+
+    }
   };
   return (
     <div className='w-full h-full flex items-center justify-center'>

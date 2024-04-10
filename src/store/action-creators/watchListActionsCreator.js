@@ -1,6 +1,6 @@
 import { watchListActions } from "../reducers/watchlistSlice"
 /**AddnewUser Action to Be Dispatched */
-export const addNewUserAction=(userId,watchList={})=>(dispatch)=>{
+export const addNewUserAction=(userId,watchList={watchList:[]})=>(dispatch)=>{
    dispatch( watchListActions.addNewUserWatchList({userId,watchList}));
 }
 
