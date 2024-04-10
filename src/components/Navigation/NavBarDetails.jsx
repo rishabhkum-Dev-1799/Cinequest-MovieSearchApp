@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useActions } from 'src/hooks/useActions';
 /**  custom imports */
 import { H2heading } from 'src/components/ui';
-import { btnLabels, en_titles } from 'src/lang';
+import { btnLabels, en_titles, labels } from 'src/lang';
 import CineQuestLogo from 'src/assets/Images/cinequest_logo.png';
 import { navigationLinks } from 'src/data';
 import { cineFadeIn } from 'src/utils/motion';
@@ -12,6 +12,8 @@ import { cineFadeIn } from 'src/utils/motion';
 const NavBarDetails = ({ onNavigation }) => {
   const { isLoggedIn } = useSelector((state) => state.authentication);
   const { logoutAction } = useActions();
+
+  /**Handler functions */
   const sessionHandler = () => {
     if (isLoggedIn) {
       logoutAction();
@@ -58,13 +60,27 @@ const NavBarDetails = ({ onNavigation }) => {
             animate='show'
             variants={cineFadeIn('up', 'tween', 0.7, 0.7)}>
             <div className='text-white text-xl font-semibold border-b-2 border-bg_primar'>
-              <p>My Watchlist</p>
+              <p>{labels?.myWatchList}</p>
             </div>
             {!isLoggedIn && (
               <div className='text-lg text-white font-semibold mt-10 bg-orange-500/70 shadow-xl rounded-lg p-2'>
-                <p>Login to Access Watchlist Feature</p>
+                <p>{labels?.loginToSeeWatchList}</p>
               </div>
             )}
+            {/* Watchlist Section */}
+            {isLoggedIn && (
+               <motion.div
+               className=' mt-4 w-full flex items-center justify-center p-2 rounded-lg bg-bg_primary/95  cursor-pointer text-navbar_bg font-semibold'
+               initial='hidden'
+               animate='show'
+               variants={cineFadeIn('up', 'tween', 0.9, 0.5)}
+               whileHover={{ scale: 1.1 }}
+               onClick={()=>onNavigation("/my-watch-list")}>
+               <p className='w-full flex items-center justify-center'>
+                 {labels?.watchList}
+               </p>
+             </motion.div>
+            ) }
           </motion.div>
         </div>
         {/* Login and Logout Sections */}
@@ -80,6 +96,7 @@ const NavBarDetails = ({ onNavigation }) => {
               {isLoggedIn ? btnLabels?.logout : btnLabels?.login}
             </p>
           </motion.div>
+          {/* Sign Up sections */}
           {!isLoggedIn && (
             <motion.div
               className='w-full flex items-center justify-center p-2 rounded-lg bg-bg_primary/95  cursor-pointer text-navbar_bg font-semibold'

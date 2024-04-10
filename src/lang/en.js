@@ -27,6 +27,9 @@ export const labels = {
   logoutSuccess:"Logout Successful",
   alreadyHaveAccount:"Already Have Account?",
   newAccount:"New User?",
+  myWatchList:"Features",
+  loginToSeeWatchList:"Login to Access Watchlist feature",
+  watchList:"WatchList"
 };
 
 export const errorMessages={
