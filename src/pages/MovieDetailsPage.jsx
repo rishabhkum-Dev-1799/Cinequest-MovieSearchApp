@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 //custom Imports
 import { useActions } from 'src/hooks/useActions';
-
 import { checkStringStartsWith } from 'src/helper/manipulationFunc';
 import MovieDetails from 'src/components/Movie/MovieDetails';
 import { btnLabels } from 'src/lang';
