@@ -7,11 +7,13 @@ import MovieItem from './MovieItem';
 import DataFetchLoader from 'src/components/common/Loaders/DataFetchLoader';
 import SearchImageError from '../common/Error/SearchImageError';
 import StartSearch from '../common/Placeholders/StartSearch';
+import { useActions } from 'src/hooks/useActions';
 
 const MoviesListComponent = memo(({setPage}) => {
   const { films, loading, error } = useSelector((state) => state.multiFilms);
   const {isLoggedIn,userEmail}=useSelector((state)=>state.authentication);
   const intersectionRef = useRef();
+  const { addNewMovieAction,removeMovieAction } = useActions();
 
   useEffect(() => {
     if (!intersectionRef.current) return;
@@ -32,6 +34,14 @@ const MoviesListComponent = memo(({setPage}) => {
     });
   }, [intersectionRef.current]);
 
+  // handler functions
+  const addToWatchListHandler = (loggedInUser,movieData) => {
+    addNewMovieAction(loggedInUser, movieData);
+  };
+  const removeMovieFromWatchListHandler = (loggedInUser,movieData) => {
+    removeMovieAction(loggedInUser, movieData);
+  }
+
   if(error){
     return (<div className='w-full flex items-center justify-center'>
         {error === "Incorrect IMDb ID." && <StartSearch/>}
@@ -49,6 +59,9 @@ const MoviesListComponent = memo(({setPage}) => {
               idx={index}
               isLoggedIn={isLoggedIn}
               loggedInUser={userEmail}
+              isAddedToWatchList={false}
+              onAddMovie={addToWatchListHandler}
+              onRemoveMovie={removeMovieFromWatchListHandler}
             />
           ))}
         </div>

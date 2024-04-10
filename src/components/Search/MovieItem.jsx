@@ -13,12 +13,11 @@ import NoPoster from 'src/assets/Images/no-poster.jpg';
 import Button from '../ui/Button/Button';
 import { getToastErrorMessage } from 'src/helper/toastFunctions';
 import { errorMessages } from 'src/lang';
-import { useActions } from 'src/hooks/useActions';
 
-const MovieItemComponent = ({ movieData, isLoggedIn, loggedInUser }) => {
+
+const MovieItem = ({ movieData, isLoggedIn,isAddedToWatchList, loggedInUser,onAddMovie,onRemoveMovie }) => {
   const navigate = useNavigate();
-  const [isMovieAddedToWishList, setIsMovieAddedToWishList] = useState(false);
-  const { addNewMovieAction,removeMovieAction } = useActions();
+  const [isMovieAddedToWishList, setIsMovieAddedToWishList] = useState(isAddedToWatchList || false);
 
   // handler functions
   /**Event handler to add the movie into db */
@@ -29,7 +28,7 @@ const MovieItemComponent = ({ movieData, isLoggedIn, loggedInUser }) => {
       getToastErrorMessage(errorMessages?.userNotLoggedInWatchListError);
       return;
     }
-    addNewMovieAction(loggedInUser, movieData);
+    onAddMovie(loggedInUser, movieData);
     setIsMovieAddedToWishList((prevValue) => !prevValue);
   };
   /**Event handler to remove the movie from db */
@@ -40,7 +39,7 @@ const MovieItemComponent = ({ movieData, isLoggedIn, loggedInUser }) => {
       getToastErrorMessage(errorMessages?.userNotLoggedInWatchListError);
       return;
     }
-    removeMovieAction(loggedInUser, movieData);
+    onRemoveMovie(loggedInUser, movieData);
     setIsMovieAddedToWishList((prevValue) => !prevValue);
   }
   return (
@@ -94,12 +93,13 @@ const MovieItemComponent = ({ movieData, isLoggedIn, loggedInUser }) => {
   );
 };
 
-MovieItemComponent.propTypes = {
+MovieItem.propTypes = {
   movieData: Proptypes.object.isRequired,
   isLoggedIn: Proptypes.bool.isRequired,
-  loggedInUser: Proptypes.object.isRequired,
+  loggedInUser: Proptypes.string.isRequired,
+  isAddedToWatchList: Proptypes.bool.isRequired,
+  onAddMovie: Proptypes.func.isRequired,
+  onRemoveMovie: Proptypes.func.isRequired,
 };
-const MovieItem = memo(MovieItemComponent, (oldProps, newProps) => {
-  return Object.is(oldProps.movieData, newProps.movieData);
-});
+
 export default MovieItem;
