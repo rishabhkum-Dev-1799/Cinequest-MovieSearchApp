@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import FormWrapper from 'src/components/common/Wrapper/FormWrapper';
 import { useActions } from 'src/hooks/useActions';
@@ -66,7 +66,7 @@ const SignUpPage = () => {
           />
           <div className='w-full flex items-center justify-center'>
             <motion.button
-              variants={cineFadeIn('up', 'spring', 1.3, 0.5)}
+              variants={cineFadeIn('up', 'tween', 1.3, 0.5)}
               initial='hidden'
               animate='show'
               whileHover={{ scale: 1.1 }}
@@ -76,6 +76,13 @@ const SignUpPage = () => {
             </motion.button>
           </div>
         </form>
+          {/* Transition to Login Page */}
+          <motion.p className='text-md lg:text-lg text-bg_primary mt-6 text-center' initial="hidden" animate="show" variants={cineFadeIn("up","tween",1.3,0.5)}>
+            {labels?.alreadyHaveAccount}
+            <Link className='text-btn_primary ml-2' to={"/login"}>
+              {btnLabels?.login}
+            </Link> 
+        </motion.p>
       </FormWrapper>
     </div>
   );

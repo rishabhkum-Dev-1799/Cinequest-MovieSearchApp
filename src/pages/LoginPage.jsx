@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import FormWrapper from 'src/components/common/Wrapper/FormWrapper';
@@ -23,7 +23,7 @@ const LoginPage = () => {
     const { value, name } = event.target;
     setFormData((prevValue) => ({ ...prevValue, [name]: value }));
   };
-  
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (!watchListDb.hasOwnProperty(formData?.email)) {
@@ -54,7 +54,7 @@ const LoginPage = () => {
           />
           <div className='w-full flex items-center justify-center'>
             <motion.button
-              variants={cineFadeIn('up', 'spring', 1.3, 0.5)}
+              variants={cineFadeIn('up', 'tween', 1.3, 0.5)}
               initial='hidden'
               animate='show'
               whileHover={{ scale: 1.1 }}
@@ -64,6 +64,19 @@ const LoginPage = () => {
             </motion.button>
           </div>
         </form>
+        {/* Transition to Sign Up Message */}
+        <motion.p
+          className='text-md lg:text-lg text-bg_primary mt-6 text-center'
+          initial='hidden'
+          animate='show'
+          variants={cineFadeIn('up', 'tween', 1.3, 0.5)}>
+          {labels?.newAccount}
+          <Link
+            className='text-btn_primary ml-2'
+            to={'/sign-up'}>
+            {btnLabels?.signUp}
+          </Link>
+        </motion.p>
       </FormWrapper>
     </div>
   );

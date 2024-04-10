@@ -25,6 +25,8 @@ export const labels = {
   signUpInfoLabel:"Sign Up and Enjoy the Full Features of cinequest",
   loginSuccess:"Login Successful",
   logoutSuccess:"Logout Successful",
+  alreadyHaveAccount:"Already Have Account?",
+  newAccount:"New User?",
 };
 
 export const errorMessages={
