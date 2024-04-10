@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types'
 
 // custom Imports
 import { cineTextVariant } from 'src/utils/motion';
 import { en_titles } from 'src/lang';
 import CineQuestLogo from "src/assets/Images/cinequest_logo.png"
 
-const SearchInfo = () => {
+const SearchInfo = ({mobileTitle,desktopTitle,infoSubtitle}) => {
   return (
     <div className='w-full flex flex-col gap-4  p-2 lg:p-4 text-center relative'>
       <div className='w-full lg:hidden flex  justify-end'>
@@ -21,7 +22,7 @@ const SearchInfo = () => {
         initial='hidden'
         animate='show'
       >
-        {en_titles?.title}
+        {mobileTitle}
       </motion.h1>
       <motion.h1
         className='hidden md:block text-3xl font-bold text-white lg:text-5xl text-bg-gradient'
@@ -29,7 +30,7 @@ const SearchInfo = () => {
         initial='hidden'
         animate='show'
       >
-        {en_titles?.welcomeTitle}
+        {desktopTitle}
       </motion.h1>
       <motion.p
         className='font-semibold text-sm lg:text-xl'
@@ -37,10 +38,15 @@ const SearchInfo = () => {
         animate='show'
         variants={cineTextVariant(0.5)}
       >
-        {en_titles?.searchInfo}
+        {infoSubtitle}
       </motion.p>
     </div>
   );
 };
 
+SearchInfo.propTypes={
+  mobileTitle:PropTypes.string.isRequired,
+  desktopTitle:PropTypes.string.isRequired,
+  infoSubtitle:PropTypes.string.isRequired
+}
 export default SearchInfo;

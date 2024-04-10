@@ -64,7 +64,11 @@ const CineSearchPage = () => {
       onScroll={onScrollHandler}>
       {/* Search Intro */}
       <div className='w-full'>
-        <SearchInfo />
+        <SearchInfo
+          mobileTitle={en_titles?.title}
+          desktopTitle={en_titles.welcomeTitle}
+          infoSubtitle={en_titles?.searchInfo}
+        />
       </div>
       {/* Seacrch Bar */}
       <div className='w-full'>
@@ -74,14 +78,16 @@ const CineSearchPage = () => {
         />
       </div>
       {/* Search Results */}
-      {queryDetails?.searchQuery&&<div className='w-full'>
-        <MoviesList setPage={setQueryDetails} />
-      </div>}
+      {queryDetails?.searchQuery && (
+        <div className='w-full'>
+          <MoviesList setPage={setQueryDetails} />
+        </div>
+      )}
       {/**Scroll to top Button ----*/}
       {isScrollToTopVisible && (
         <div
           className='w-[50px] h-[50px] z-30 cursor-pointer rounded-full fixed bottom-2 right-3 bg-black flex items-center justify-center text-white hover:scale-105 '
-          onClick={()=>scrollToTop(containerRef.current)}>
+          onClick={() => scrollToTop(containerRef.current)}>
           <AiOutlineArrowUp
             fontSize={32}
             fontWeight='bold'
@@ -89,16 +95,16 @@ const CineSearchPage = () => {
         </div>
       )}
       {/* End of the Images Results Message */}
-      {queryDetails.page>Math.ceil(totalFilms/10)&& !error && !loading && (
-        <div className="mt-3 h-[50px] w-full text-center text-xl font-bold text-navbar_bg ">
+      {queryDetails.page > Math.ceil(totalFilms / 10) && !error && !loading && (
+        <div className='mt-3 h-[50px] w-full text-center text-xl font-bold text-navbar_bg '>
           {en_titles?.endOfResults}
-      </div>
+        </div>
       )}
       {/* Empty Search Results */}
-      {!queryDetails.searchQuery &&(
-          <div className='w-full flex items-start justify-center'>
-              <StartSearch/>
-          </div>
+      {!queryDetails.searchQuery && (
+        <div className='w-full flex items-start justify-center'>
+          <StartSearch />
+        </div>
       )}
     </div>
   );
