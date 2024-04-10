@@ -10,7 +10,7 @@ import StartSearch from '../common/Placeholders/StartSearch';
 
 const MoviesListComponent = memo(({setPage}) => {
   const { films, loading, error } = useSelector((state) => state.multiFilms);
-  const {isLoggedIn}=useSelector((state)=>state.authentication);
+  const {isLoggedIn,userEmail}=useSelector((state)=>state.authentication);
   const intersectionRef = useRef();
 
   useEffect(() => {
@@ -48,6 +48,7 @@ const MoviesListComponent = memo(({setPage}) => {
               movieData={film}
               idx={index}
               isLoggedIn={isLoggedIn}
+              loggedInUser={userEmail}
             />
           ))}
         </div>

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { memo, useState } from 'react';
 import Proptypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { FaRegBookmark,FaBookmark } from 'react-icons/fa';
+import { FaRegBookmark, FaBookmark } from 'react-icons/fa';
 
 import { H3heading } from '../ui';
 import {
@@ -13,20 +13,35 @@ import NoPoster from 'src/assets/Images/no-poster.jpg';
 import Button from '../ui/Button/Button';
 import { getToastErrorMessage } from 'src/helper/toastFunctions';
 import { errorMessages } from 'src/lang';
+import { useActions } from 'src/hooks/useActions';
 
-const MovieItemComponent = ({ movieData,isLoggedIn }) => {
+const MovieItemComponent = ({ movieData, isLoggedIn, loggedInUser }) => {
   const navigate = useNavigate();
   const [isMovieAddedToWishList, setIsMovieAddedToWishList] = useState(false);
+  const { addNewMovieAction,removeMovieAction } = useActions();
 
   // handler functions
-  const addToWatchListHandler =(e)=>{
+  /**Event handler to add the movie into db */
+  const addToWatchListHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if(!isLoggedIn){
+    if (!isLoggedIn) {
       getToastErrorMessage(errorMessages?.userNotLoggedInWatchListError);
       return;
     }
-    setIsMovieAddedToWishList((prevValue)=>!prevValue);
+    addNewMovieAction(loggedInUser, movieData);
+    setIsMovieAddedToWishList((prevValue) => !prevValue);
+  };
+  /**Event handler to remove the movie from db */
+  const removeMovieFromWatchListHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isLoggedIn) {
+      getToastErrorMessage(errorMessages?.userNotLoggedInWatchListError);
+      return;
+    }
+    removeMovieAction(loggedInUser, movieData);
+    setIsMovieAddedToWishList((prevValue) => !prevValue);
   }
   return (
     <motion.div
@@ -34,19 +49,28 @@ const MovieItemComponent = ({ movieData,isLoggedIn }) => {
       initial='hidden'
       animate='show'
       whileHover={{ scale: 1.01 }}
-      onClick={() => navigate(`/${movieData?.imdbID}`)}
-      >
+      onClick={() => navigate(`/${movieData?.imdbID}`)}>
       {/* Add to Watch List Buttoon */}
-      <Button className={'absolute z-20 w-[50px] h-[50px] top-2 right-2'} onClick={addToWatchListHandler}>
-        {!isMovieAddedToWishList &&<FaRegBookmark
-          className='text-white text-2xl'
-          size={24}
-        />}
-        {isMovieAddedToWishList && <FaBookmark
-          className='text-green-500 text-2xl'
-          size={24}
-        /> }
-      </Button>
+      {!isMovieAddedToWishList && (
+        <Button
+          className={'absolute z-20 w-[50px] h-[50px] top-2 right-2'}
+          onClick={addToWatchListHandler}>
+          <FaRegBookmark
+            className='text-white text-2xl'
+            size={24}
+          />
+        </Button>
+      )}
+      {isMovieAddedToWishList && (
+        <Button
+          className={'absolute z-20 w-[50px] h-[50px] top-2 right-2'}
+          onClick={removeMovieFromWatchListHandler}>
+          <FaBookmark
+            className='text-green-500 text-2xl'
+            size={24}
+          />
+        </Button>
+      )}
       <div className='overflow-hidden w-full max-w-[500px] h-[400px]'>
         <img
           src={
@@ -73,9 +97,9 @@ const MovieItemComponent = ({ movieData,isLoggedIn }) => {
 MovieItemComponent.propTypes = {
   movieData: Proptypes.object.isRequired,
   isLoggedIn: Proptypes.bool.isRequired,
+  loggedInUser: Proptypes.object.isRequired,
 };
-const MovieItem = memo(MovieItemComponent,(oldProps,newProps)=>{
-  console.log("isChanged",Object.is(oldProps.movieData,newProps.movieData))
-  return Object.is(oldProps.movieData,newProps.movieData);
+const MovieItem = memo(MovieItemComponent, (oldProps, newProps) => {
+  return Object.is(oldProps.movieData, newProps.movieData);
 });
 export default MovieItem;

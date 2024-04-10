@@ -31,5 +31,12 @@ export const labels = {
 
 export const errorMessages={
   userNotFound:"User Not Found!! Please Sign Up to Continue",
-  userNotLoggedInWatchListError:"Please Login to Add Movie to WishList"
+  userNotLoggedInWatchListError:"Please Login to Add Movie to WishList",
+  movieAddedError:"Oops You cannot Add Movie To WatchList! Please Re-Login to Continue",
+  movieAlreadyExistErrorMessage:"Movie Already Exists in Your WatchList",
+  movieNotInWatchList:"Movie Not Found in Your WatchList"
+}
+export const successMessages={
+  movieAdded:"Movie Successfully Added to Watchlist",
+  movieRemoved:"Movie Successfully Removed from Watchlist"
 }

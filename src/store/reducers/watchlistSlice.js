@@ -27,7 +27,7 @@ const watchListSlice = createSlice({
             updateWatchListDetailsInLocalStorage(state.watchListDb)
         },
         removeMovieFromWatchList:(state,action)=>{
-            state.watchListDb[action.payload?.userId].watchList = state.watchListDb[action.payload?.userId].watchList.filter((movie)=>movie?.id !== action.payload?.movie?.imdbID)
+            state.watchListDb[action.payload?.userId].watchList = state.watchListDb[action.payload?.userId].watchList.filter((movie)=>movie?.imdbID !== action.payload?.movie?.imdbID)
             updateWatchListDetailsInLocalStorage(state.watchListDb)
         },
         checkIsUserHasWatchList:(state,action)=>{
