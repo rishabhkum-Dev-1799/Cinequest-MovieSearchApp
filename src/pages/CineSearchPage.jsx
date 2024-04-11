@@ -10,13 +10,14 @@ import {
   scrollToTop,
   shouldShowScrollToTop,
 } from 'src/helper/domManipulationHelper';
+import { getSearchQueryFromLocalStorage, updateLocalStorageSearchQuery } from 'src/helper/localStorage';
 import { useActions } from 'src/hooks/useActions';
 import { useDebounce } from 'src/hooks/useDebounce';
 import { en_titles } from 'src/lang';
 
 const CineSearchPage = () => {
   const [queryDetails, setQueryDetails] = useState({
-    searchQuery: 'John Wick',
+    searchQuery: getSearchQueryFromLocalStorage(),
     page: 1,
   });
   const [isScrollToTopVisible, setIsScrollToTopVisible] = useState(false);
@@ -24,7 +25,9 @@ const CineSearchPage = () => {
   /** hooks and store functions*/
   const { getSearchFilms, resetFilms } = useActions();
   const debouncedFetchFilmsWrapper = useDebounce(getSearchFilms, 500);
-  const { error, totalFilms ,loading } = useSelector((state) => state.multiFilms);
+  const { error, totalFilms, loading } = useSelector(
+    (state) => state.multiFilms
+  );
 
   // handler functions
   const setSearchQueryHandler = (searchQuery) => {
@@ -55,6 +58,7 @@ const CineSearchPage = () => {
   useEffect(() => {
     resetFilms();
     setQueryDetails((prevValue) => ({ ...prevValue, page: 1 }));
+    updateLocalStorageSearchQuery(queryDetails?.searchQuery);
   }, [queryDetails?.searchQuery]);
 
   return (

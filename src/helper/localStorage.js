@@ -1,4 +1,4 @@
-import { LOGGED_IN_USER_KEY, WATCHLIST_DB } from "src/constants";
+import { LATEST_SEARCH_QUERY, LOGGED_IN_USER_KEY, WATCHLIST_DB } from "src/constants";
 
 /**
  * 
@@ -45,4 +45,26 @@ export const getWatchListDetailsFromLocalStorage=(data)=>{
 export const updateWatchListDetailsInLocalStorage=(data)=>{
     const stringifiedData=JSON.stringify(data);
     localStorage.setItem(WATCHLIST_DB,stringifiedData)
+}
+
+/**
+ * 
+ * @param {string} searchQuery 
+ * @returns This function will update the search query in the local storage
+ */
+export const updateLocalStorageSearchQuery=(searchQuery)=>{
+    localStorage.setItem(LATEST_SEARCH_QUERY,searchQuery)
+}
+
+/**
+ * 
+ * @returns This function will return the search query from the local storage
+ 
+ */
+export const getSearchQueryFromLocalStorage=()=>{
+    const searchQuery = localStorage.getItem(LATEST_SEARCH_QUERY);
+    if(!searchQuery){
+        return "John Wick"
+    }
+    return searchQuery
 }
