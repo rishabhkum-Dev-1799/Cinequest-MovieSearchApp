@@ -73,7 +73,7 @@ const WatchlistPage = () => {
   }, []);
   return (
     <div
-      className='p-4 w-full h-full  overflow-y-scroll flex flex-col gap-4 items-center '
+      className='p-4 w-full h-full overflow-y-scroll flex flex-col gap-4 items-center '
       ref={containerRef}
       onScroll={onScrollHandler}>
       {/* Search Intro */}
@@ -118,7 +118,7 @@ const WatchlistPage = () => {
       {!watchListDataObj?.isWatchListDataLoading &&
         watchListDataObj?.watchListData &&
         watchListDataObj?.watchListData.length > 0 && (
-          <motion.div className='w-full p-2 overflow-hidden grid gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-5' initial="hidden" animate="show"  variants={cineFadeIn("up","tween",0.7,0.5)}>
+          <motion.div className='w-full p-2 grid gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-5' initial="hidden" animate="show"  variants={cineFadeIn("up","tween",0.7,0.5)}>
             {watchListDataObj.watchListData.map((film, index) => (
               <MovieItem
                 key={uuid()}
