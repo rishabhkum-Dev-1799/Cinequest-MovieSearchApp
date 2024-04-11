@@ -1,5 +1,5 @@
 # Cine Quest - A Movie Search App
-[cinequest-images]
+![cinequest-images](public/assests/Images/cine-quest.png)
 
 This is a Movie Search App for all the movie Lovers out their . On this app a user can search their favorite movies , check their details i.e Movie Plot , Relase Year , Cast and It's IMDB Rating .Apart from this the User can save their favorite movie on their personalized watchlist.
 
