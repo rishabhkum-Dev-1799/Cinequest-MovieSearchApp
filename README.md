@@ -1,5 +1,5 @@
 # Cine Quest - A Movie Search App
-[cinequest-images]
+![cinequest-images](public/assests/Images/cine-quest.png)
 
 This is a Movie Search App for all the movie Lovers out their . On this app a user can search their favorite movies , check their details i.e Movie Plot , Relase Year , Cast and It's IMDB Rating .Apart from this the User can save their favorite movie on their personalized watchlist.
 
@@ -15,6 +15,21 @@ This is a Movie Search App for all the movie Lovers out their . On this app a us
 ### Deployed Website Endpoint
 Hit the Url to Visit The Cinequest
 https://cinequest-rkum17.netlify.app/ 
+
+### Cine Quest src Folder Structure
+
+    .
+    ├── assests                 # Folder containing Images 
+    ├── components              # Folder Containing React Components
+    ├── constants               # Folder Containing Constant File
+    ├── data                    # Folder Containing Mock Data
+    ├── helper                  # Folder Containing All the Helper functions
+    ├── hooks                   # Folder Containing Custom Hooks
+    └── lang                    # Folder Containing Language Files
+    ├── pages                   # Folder Containing Pages Components
+    ├── store                   # Folder Containing Redux and State Related Files
+    └── utils                   # Folder Containing Util functions Files
+
 
 ## Installation
 ### Prerequisites
