@@ -10,7 +10,7 @@ export const en_titles = {
 
 export const btnLabels = {
   back: 'Back',
-  errorBack: 'Back to Main Page',
+  errorBack: 'Back to Search Page',
   login: 'Login',
   signUp: 'Sign Up',
   logout: 'Logout',

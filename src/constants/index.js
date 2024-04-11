@@ -1,5 +1,6 @@
 export const OMDB_API_URL="https://www.omdbapi.com"
 export const OMBD_API_KEY="7360f4ab"
+/**DONT ALTER THE BELOW VARIABLES */
 export const LOGGED_IN_USER_KEY="LOGGED_IN_USER"
 export const WATCHLIST_DB="WATCHLIST_DB_DONT_DELETE"
 export const LATEST_SEARCH_QUERY="LATEST_SEARCH_QUERY"
