@@ -22,7 +22,7 @@ const MovieDetailsPage = () => {
   /*Handler functions*/
   const onBackHandler = useCallback(() => {
     console.log('onBackHandler');
-    navigate('/');
+    navigate(-1);
   }, [navigate]);
 
   /**Use Effect for Fetching the Data on Page Load */
