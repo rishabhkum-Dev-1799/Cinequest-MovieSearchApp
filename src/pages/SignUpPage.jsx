@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import FormWrapper from 'src/components/common/Wrapper/FormWrapper';
 import { useActions } from 'src/hooks/useActions';
 import { FormInput } from 'src/components/ui';
-import { btnLabels, labels } from 'src/lang';
+import { btnLabels, errorMessages, labels } from 'src/lang';
 import { cineFadeIn } from 'src/utils/motion';
 import { getToastErrorMessage } from 'src/helper/toastFunctions';
 
@@ -28,7 +28,7 @@ const SignUpPage = () => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if(watchListDb.hasOwnProperty(formData?.email)){
-      getToastErrorMessage("User Already Exists! Please Login to Continue")
+      getToastErrorMessage(errorMessages?.userAlreadyExist)
       return;
     }
     else {

@@ -42,6 +42,7 @@ export const errorMessages = {
     'Oops You cannot Add Movie To WatchList! Please Re-Login to Continue',
   movieAlreadyExistErrorMessage: 'Movie Already Exists in Your WatchList',
   movieNotInWatchList: 'Movie Not Found in Your WatchList',
+  userAlreadyExist:"User Already Exists! Please Login to Continue"
 };
 export const successMessages = {
   movieAdded: 'Movie Successfully Added to Watchlist',
